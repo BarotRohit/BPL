@@ -26,7 +26,7 @@ export default function BoardPageClient() {
             BOARD MEMBERS
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-            Meet the dedicated individuals working behind the scenes to make Barot Premier League Season 2 the biggest and best cricket festival in our community's history.
+            Meet the dedicated individuals working behind the scenes to make Barot Premier League Season 2 the biggest and best cricket festival in our community&apos;s history.
           </p>
         </motion.div>
 
