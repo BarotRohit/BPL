@@ -4,23 +4,25 @@ export const config = {
   season: 2,
   shortName: "BPL",
   tagline: "The Biggest Cricket Festival of the Barot Community",
-  
+
   // Set to null to show "Coming Soon" instead of countdown
   tournamentDate: null as string | null, // e.g., "2027-01-15T00:00:00"
-  
+
   // Contact Information (update with real info)
   contact: {
     address: "Barot Village, Mandi District, Himachal Pradesh, India",
   },
-  
+
   // Board Members
   boardMembers: [
-    { id: 1, name: "Rahul Barot", role: "President", phone: "+91 98765 43210", location: "Barot Main" },
-    { id: 2, name: "Amit Barot", role: "Vice President", phone: "+91 98765 43211", location: "Upper Barot" },
-    { id: 3, name: "Suresh Barot", role: "Secretary", phone: "+91 98765 43212", location: "Lower Barot" },
-    { id: 4, name: "Vikram Barot", role: "Treasurer", phone: "+91 98765 43213", location: "Barot Central" },
+    { id: 1, name: "Nirav Barot", role: "Board Member", phone: "+91 99790 21694", location: "Hanspura" },
+    { id: 2, name: "Akshit Barot", role: "Board Member", phone: "+91 88668 51970", location: "Vastral" },
+    { id: 3, name: "Chirag Barot", role: "Board Member", phone: "+91 90338 71231", location: "Vastral" },
+    { id: 4, name: "Hemant Barot", role: "Board Member", phone: "+91 78780 40336", location: "Odhav" },
+    { id: 5, name: "Akshay Barot", role: "Board Member", phone: "+91 70161 31219", location: "Naroda" },
+    { id: 6, name: "Ketan Barot", role: "Board Member", phone: "+91 90160 34966", location: "Vejalpur" },
   ],
-  
+
   // Social Media (update with real links)
   social: {
     instagram: "https://www.instagram.com",
@@ -31,15 +33,15 @@ export const config = {
   // Google Sheets Apps Script Web App URL
   // Follow GOOGLE_SHEETS_SETUP.md to get this URL
   googleSheetsUrl: process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || "",
-  
+
   // Season 1 Data (update with real data)
   season1: {
     champion: {
-      teamName: "Barot Warriors",
+      teamName: "Barot Titans",
       tagline: "Champions of BPL Season 1",
     },
     runnerUp: {
-      teamName: "Valley Strikers",
+      teamName: "Barot Kings XI",
       tagline: "Runners-Up BPL Season 1",
     },
     awards: {
@@ -48,7 +50,7 @@ export const config = {
       playerOfTournament: { name: "Coming Soon", teamName: "TBD" },
     },
   },
-  
+
   // Stats
   stats: [
     { value: 8, suffix: "", label: "Teams", description: "Competing for glory" },
@@ -56,11 +58,50 @@ export const config = {
     { value: 1, suffix: "", label: "Community", description: "United by cricket" },
     { value: "∞", suffix: "", label: "Memories", description: "That last forever" },
   ],
-  
-  // Teams (update with real data)
+
+  // Teams
   teams: [
     {
       id: 1,
+      name: "Barot Titans",
+      shortName: "BT",
+      captain: "TBD",
+      motto: "Season 1 Champions!",
+      primaryColor: "#00d4ff",
+      secondaryColor: "#0891b2",
+      gradient: "from-cyan-500 to-blue-700",
+      glowColor: "rgba(0, 212, 255, 0.5)",
+      emoji: "🏆",
+      logo: "/teams/barot-titans.png",
+    },
+    {
+      id: 2,
+      name: "Barot Kings XI",
+      shortName: "BKXI",
+      captain: "TBD",
+      motto: "Royalty on the Field!",
+      primaryColor: "#f5c518",
+      secondaryColor: "#ff6b35",
+      gradient: "from-yellow-500 to-orange-600",
+      glowColor: "rgba(245, 197, 24, 0.5)",
+      emoji: "👑",
+      logo: "/teams/barot-kings-xi.png",
+    },
+    {
+      id: 3,
+      name: "Barot Super Kings",
+      shortName: "BSK",
+      captain: "TBD",
+      motto: "Fear the Roar!",
+      primaryColor: "#f59e0b",
+      secondaryColor: "#b45309",
+      gradient: "from-amber-500 to-yellow-800",
+      glowColor: "rgba(245, 158, 11, 0.5)",
+      emoji: "🦁",
+      logo: "/teams/barot-super-kings.png",
+    },
+    {
+      id: 4,
       name: "Barot Warriors",
       shortName: "BW",
       captain: "TBD",
@@ -70,93 +111,62 @@ export const config = {
       gradient: "from-orange-600 to-yellow-500",
       glowColor: "rgba(255, 107, 53, 0.5)",
       emoji: "⚔️",
+      logo: "/teams/barot-warriors.png",
     },
     {
-      id: 2,
-      name: "Valley Strikers",
-      shortName: "VS",
+      id: 5,
+      name: "Barot Sunrisers",
+      shortName: "BSR",
       captain: "TBD",
-      motto: "Strike Fear, Strike Hard!",
+      motto: "Rising to the Top!",
+      primaryColor: "#ef4444",
+      secondaryColor: "#ff6b35",
+      gradient: "from-red-600 to-orange-500",
+      glowColor: "rgba(239, 68, 68, 0.5)",
+      emoji: "🌅",
+      logo: "/teams/barot-sunrisers.png",
+    },
+    {
+      id: 6,
+      name: "Barot Strikers",
+      shortName: "BS",
+      captain: "TBD",
+      motto: "Strike Hard, Strike Fast!",
       primaryColor: "#6c35de",
       secondaryColor: "#00d4ff",
       gradient: "from-purple-700 to-cyan-500",
       glowColor: "rgba(108, 53, 222, 0.5)",
       emoji: "⚡",
-    },
-    {
-      id: 3,
-      name: "Mountain Titans",
-      shortName: "MT",
-      captain: "TBD",
-      motto: "Unstoppable Like Mountains!",
-      primaryColor: "#00d4ff",
-      secondaryColor: "#0891b2",
-      gradient: "from-cyan-500 to-blue-700",
-      glowColor: "rgba(0, 212, 255, 0.5)",
-      emoji: "🏔️",
-    },
-    {
-      id: 4,
-      name: "Royal Riders",
-      shortName: "RR",
-      captain: "TBD",
-      motto: "Ride to Victory!",
-      primaryColor: "#8b5cf6",
-      secondaryColor: "#6c35de",
-      gradient: "from-violet-500 to-purple-800",
-      glowColor: "rgba(139, 92, 246, 0.5)",
-      emoji: "👑",
-    },
-    {
-      id: 5,
-      name: "Thunder Bulls",
-      shortName: "TB",
-      captain: "TBD",
-      motto: "Thunder Strikes Twice!",
-      primaryColor: "#f5c518",
-      secondaryColor: "#ff6b35",
-      gradient: "from-yellow-500 to-orange-600",
-      glowColor: "rgba(245, 197, 24, 0.5)",
-      emoji: "🌩️",
-    },
-    {
-      id: 6,
-      name: "Phoenix XI",
-      shortName: "PX",
-      captain: "TBD",
-      motto: "Rise From the Ashes!",
-      primaryColor: "#ef4444",
-      secondaryColor: "#ff6b35",
-      gradient: "from-red-600 to-orange-500",
-      glowColor: "rgba(239, 68, 68, 0.5)",
-      emoji: "🔥",
+      logo: "/teams/barot-strikers.png",
     },
     {
       id: 7,
-      name: "Storm Eagles",
-      shortName: "SE",
+      name: "Barot Challengers",
+      shortName: "BC",
       captain: "TBD",
-      motto: "Soar High, Strike Hard!",
+      motto: "Challenge Accepted!",
       primaryColor: "#10b981",
       secondaryColor: "#00d4ff",
       gradient: "from-emerald-600 to-cyan-500",
       glowColor: "rgba(16, 185, 129, 0.5)",
-      emoji: "🦅",
+      emoji: "🎯",
+      logo: "/teams/barot-challengers.png",
     },
     {
       id: 8,
-      name: "Desert Lions",
-      shortName: "DL",
+      name: "Barot Fighters",
+      shortName: "BF",
       captain: "TBD",
-      motto: "Roar on the Field!",
-      primaryColor: "#f59e0b",
-      secondaryColor: "#b45309",
-      gradient: "from-amber-500 to-yellow-800",
-      glowColor: "rgba(245, 158, 11, 0.5)",
-      emoji: "🦁",
+      motto: "Fight till the End!",
+      primaryColor: "#8b5cf6",
+      secondaryColor: "#6c35de",
+      gradient: "from-violet-500 to-purple-800",
+      glowColor: "rgba(139, 92, 246, 0.5)",
+      emoji: "🥊",
+      logo: "/teams/barot-fighters.png",
     },
   ],
-  
+
   // Testimonials
   testimonials: [
     {
@@ -195,7 +205,7 @@ export const config = {
       rating: 5,
     },
   ],
-  
+
   // Journey Timeline
   journey: [
     {
@@ -247,7 +257,7 @@ export const config = {
       color: "#ef4444",
     },
   ],
-  
+
   // Why Join Features
   features: [
     {

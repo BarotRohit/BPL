@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ onComplete }: { onComplete?: () => void }) {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
@@ -12,6 +12,7 @@ export default function LoadingScreen() {
     const hasLoaded = sessionStorage.getItem("bpl-loaded");
     if (hasLoaded) {
       setIsLoading(false);
+      if (onComplete) onComplete();
       return;
     }
 
@@ -22,6 +23,7 @@ export default function LoadingScreen() {
           setTimeout(() => {
             setIsLoading(false);
             sessionStorage.setItem("bpl-loaded", "true");
+            if (onComplete) onComplete();
           }, 500);
           return 100;
         }
@@ -65,28 +67,37 @@ export default function LoadingScreen() {
 
           {/* Floating particles */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  width: Math.random() * 6 + 2,
-                  height: Math.random() * 6 + 2,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  background: ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35"][Math.floor(Math.random() * 4)],
-                }}
-                animate={{
-                  y: [0, -200],
-                  opacity: [0, 0.8, 0],
-                }}
-                transition={{
-                  duration: Math.random() * 3 + 2,
-                  repeat: Infinity,
-                  delay: Math.random() * 3,
-                }}
-              />
-            ))}
+            {[...Array(20)].map((_, i) => {
+              // Deterministic values for SSR hydration matching
+              const pseudoRandom1 = (i * 17) % 100 / 100;
+              const pseudoRandom2 = (i * 23) % 100 / 100;
+              const pseudoRandom3 = (i * 31) % 100 / 100;
+              const colors = ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35"];
+              const color = colors[i % 4];
+
+              return (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full"
+                  style={{
+                    width: pseudoRandom1 * 6 + 2,
+                    height: pseudoRandom1 * 6 + 2,
+                    left: `${pseudoRandom2 * 100}%`,
+                    top: `${pseudoRandom3 * 100}%`,
+                    background: color,
+                  }}
+                  animate={{
+                    y: [0, -200],
+                    opacity: [0, 0.8, 0],
+                  }}
+                  transition={{
+                    duration: pseudoRandom1 * 3 + 2,
+                    repeat: Infinity,
+                    delay: pseudoRandom2 * 3,
+                  }}
+                />
+              );
+            })}
           </div>
 
           {/* Main content */}

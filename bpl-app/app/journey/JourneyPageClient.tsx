@@ -9,27 +9,34 @@ import Link from "next/link";
 function FloatingParticles() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full opacity-20"
-          style={{
-            width: Math.random() * 6 + 2,
-            height: Math.random() * 6 + 2,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            background: ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35", "#ef4444"][
-              Math.floor(Math.random() * 5)
-            ],
-          }}
-          animate={{ y: [0, -100, 0], opacity: [0, 0.5, 0] }}
-          transition={{
-            duration: Math.random() * 5 + 3,
-            repeat: Infinity,
-            delay: Math.random() * 4,
-          }}
-        />
-      ))}
+      {[...Array(20)].map((_, i) => {
+        const pseudoRandom1 = (i * 17) % 100 / 100;
+        const pseudoRandom2 = (i * 23) % 100 / 100;
+        const pseudoRandom3 = (i * 31) % 100 / 100;
+        const pseudoRandom4 = (i * 37) % 100 / 100;
+        const colors = ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35", "#ef4444"];
+        const color = colors[i % 5];
+
+        return (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-20"
+            style={{
+              width: pseudoRandom1 * 6 + 2,
+              height: pseudoRandom1 * 6 + 2,
+              left: `${pseudoRandom2 * 100}%`,
+              top: `${pseudoRandom3 * 100}%`,
+              background: color,
+            }}
+            animate={{ y: [0, -100, 0], opacity: [0, 0.5, 0] }}
+            transition={{
+              duration: pseudoRandom1 * 5 + 3,
+              repeat: Infinity,
+              delay: pseudoRandom4 * 4,
+            }}
+          />
+        );
+      })}
     </div>
   );
 }

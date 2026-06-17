@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import type { Team } from "@/lib/config";
+import Image from "next/image";
+import { useState } from "react";
 
 interface TeamCardProps {
   team: Team;
@@ -13,6 +15,7 @@ interface TeamCardProps {
 export default function TeamCard({ team, index }: TeamCardProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-30px" });
+  const [imgError, setImgError] = useState(false);
 
   return (
     <motion.div
@@ -36,9 +39,9 @@ export default function TeamCard({ team, index }: TeamCardProps) {
       />
 
       <div className="p-6 flex flex-col items-center text-center gap-4">
-        {/* Logo Placeholder */}
+        {/* Logo Placeholder / Image */}
         <motion.div
-          className="w-24 h-24 rounded-full flex items-center justify-center text-5xl relative"
+          className="w-24 h-24 rounded-full flex items-center justify-center text-5xl relative overflow-hidden"
           style={{
             background: `radial-gradient(circle, ${team.primaryColor}33, ${team.secondaryColor}22)`,
             border: `2px solid ${team.primaryColor}44`,
@@ -47,14 +50,17 @@ export default function TeamCard({ team, index }: TeamCardProps) {
           transition={{ duration: 0.5 }}
           animate={{ boxShadow: [`0 0 20px ${team.glowColor}33`, `0 0 40px ${team.glowColor}55`, `0 0 20px ${team.glowColor}33`] }}
         >
-          {team.emoji}
-          {/* Badge */}
-          <div
-            className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bebas font-bold text-navy"
-            style={{ background: `linear-gradient(135deg, ${team.primaryColor}, ${team.secondaryColor})` }}
-          >
-            {team.shortName.slice(0, 1)}
-          </div>
+          {team.logo && !imgError ? (
+            <Image 
+              src={team.logo} 
+              alt={team.name} 
+              fill
+              className="object-cover rounded-full"
+              onError={() => setImgError(true)}
+            />
+          ) : (
+            team.emoji
+          )}
         </motion.div>
 
         {/* Team Name */}

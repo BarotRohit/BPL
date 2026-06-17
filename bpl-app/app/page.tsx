@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import StatCounter from "@/components/StatCounter";
 import TestimonialsGrid from "@/components/TestimonialsGrid";
@@ -16,31 +16,39 @@ const YoutubeIcon = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="
 // Floating particles component (inline)
 function FloatingParticles() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(25)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full opacity-30"
-          style={{
-            width: Math.random() * 8 + 2,
-            height: Math.random() * 8 + 2,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            background: ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35"][Math.floor(Math.random() * 4)],
-          }}
-          animate={{
-            y: [0, -120, 0],
-            x: [0, Math.random() * 40 - 20, 0],
-            opacity: [0, 0.6, 0],
-          }}
-          transition={{
-            duration: Math.random() * 6 + 4,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {[...Array(30)].map((_, i) => {
+        const pseudoRandom1 = (i * 17) % 100 / 100;
+        const pseudoRandom2 = (i * 23) % 100 / 100;
+        const pseudoRandom3 = (i * 31) % 100 / 100;
+        const pseudoRandom4 = (i * 37) % 100 / 100;
+        const colors = ["#f5c518", "#6c35de", "#00d4ff", "#ff6b35"];
+        const color = colors[i % 4];
+
+        return (
+          <motion.div
+            key={i}
+            className="absolute rounded-full opacity-20"
+            style={{
+              width: pseudoRandom1 * 8 + 2,
+              height: pseudoRandom1 * 8 + 2,
+              left: `${pseudoRandom2 * 100}%`,
+              top: `${pseudoRandom3 * 100}%`,
+              background: color,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, pseudoRandom4 * 40 - 20, 0],
+              opacity: [0, 0.4, 0],
+            }}
+            transition={{
+              duration: pseudoRandom1 * 6 + 4,
+              repeat: Infinity,
+              delay: pseudoRandom2 * 5,
+            }}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -71,16 +79,14 @@ function StadiumLights() {
   );
 }
 
-export default function HomePage() {
+function HomeContent() {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
-    <>
-      <LoadingScreen />
-
+    <main>
       {/* ===== HERO ===== */}
       <section
         ref={heroRef}
@@ -556,6 +562,17 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+    </main>
+  );
+}
+
+export default function HomePage() {
+  const [isReady, setIsReady] = useState(false);
+
+  return (
+    <>
+      <LoadingScreen onComplete={() => setIsReady(true)} />
+      {isReady && <HomeContent />}
     </>
   );
 }
