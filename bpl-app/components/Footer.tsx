@@ -1,0 +1,148 @@
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { config } from "@/lib/config";
+
+const InstagramIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>;
+const FacebookIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>;
+const YoutubeIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>;
+
+const footerLinks = [
+  { href: "/", label: "Home" },
+  { href: "/teams", label: "Teams" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/journey", label: "Journey" },
+  { href: "/board", label: "Board Members" },
+  { href: "/register", label: "Register" },
+];
+
+export default function Footer() {
+  return (
+    <footer className="relative bg-[#060918] border-t border-white/10 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-1 bg-gradient-to-r from-transparent via-royal to-transparent" />
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-royal/5 rounded-full filter blur-3xl" />
+      <div className="absolute top-0 right-1/4 w-64 h-64 bg-cyan/5 rounded-full filter blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          
+          {/* Brand */}
+          <div className="lg:col-span-1">
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <span className="text-4xl">🏆</span>
+              <div>
+                <div className="font-bebas text-3xl tracking-widest gradient-text-gold">BPL</div>
+                <div className="text-xs font-rajdhani font-bold tracking-[3px] text-cyan-400 uppercase">Season 2</div>
+              </div>
+            </Link>
+            <p className="text-white/50 text-sm font-inter leading-relaxed mb-6">
+              Barot Premier League — bringing the Barot community together through the love of cricket. 
+              Season 2 is going to be bigger, better, and more exciting!
+            </p>
+            {/* Social */}
+            <div className="flex gap-3">
+              {[
+              { href: config.social.instagram, icon: <InstagramIcon />, color: "hover:text-pink-400 hover:border-pink-400" },
+                { href: config.social.facebook, icon: <FacebookIcon />, color: "hover:text-blue-400 hover:border-blue-400" },
+                { href: config.social.youtube, icon: <YoutubeIcon />, color: "hover:text-red-400 hover:border-red-400" },
+              ].map((s, i) => (
+                <motion.a
+                  key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -3 }}
+                  className={`p-2.5 rounded-xl bg-white/5 border border-white/10 text-white/60 transition-all duration-300 ${s.color}`}
+                >
+                  {s.icon}
+                </motion.a>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-rajdhani font-700 text-lg tracking-widest text-white uppercase mb-6">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white/50 hover:text-cyan-400 font-rajdhani font-500 transition-colors duration-200 flex items-center gap-2 group"
+                  >
+                    <span className="w-4 h-0.5 bg-royal/50 group-hover:w-6 group-hover:bg-cyan-400 transition-all duration-300" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-rajdhani font-700 text-lg tracking-widest text-white uppercase mb-6">
+              Contact Us
+            </h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Phone size={16} className="text-cyan-400 mt-0.5 shrink-0" />
+                <div>
+                  <div className="text-xs text-white/40 font-inter">Direct Contact</div>
+                  <Link href="/board" className="text-white/70 hover:text-cyan-400 font-rajdhani transition-colors flex items-center gap-1 group">
+                    <span>View Board Members Directory</span>
+                    <span className="text-white/30 group-hover:text-cyan-400 transition-colors">→</span>
+                  </Link>
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={16} className="text-orange mt-0.5 shrink-0" />
+                <div>
+                  <div className="text-xs text-white/40 font-inter">Address</div>
+                  <p className="text-white/70 font-rajdhani text-sm">{config.contact.address}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Register CTA */}
+          <div>
+            <h4 className="font-rajdhani font-700 text-lg tracking-widest text-white uppercase mb-6">
+              Join BPL-2
+            </h4>
+            <div className="glass rounded-2xl p-6 text-center border border-royal/30">
+              <div className="text-4xl mb-3">🏏</div>
+              <p className="text-white/70 font-inter text-sm mb-4 leading-relaxed">
+                Registration for BPL Season 2 is open! Don&apos;t miss your chance to be part of history.
+              </p>
+              <Link href="/register">
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="btn-primary text-sm px-5 py-2.5 w-full justify-center"
+                >
+                  <span>Register Now →</span>
+                </motion.div>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/30 text-sm font-inter text-center md:text-left">
+            © 2025 Barot Premier League. All rights reserved. Made with ❤️ for the Barot Community.
+          </p>
+          <div className="flex items-center gap-2 text-white/30 text-sm font-inter">
+            <span className="text-gold">🏆</span>
+            <span>BPL Season 2 — Coming Soon</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
