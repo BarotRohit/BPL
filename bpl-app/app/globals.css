@@ -54,8 +54,16 @@ body {
 }
 
 /* ====== CUSTOM CURSOR ====== */
-* {
-  cursor: none;
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
+}
+
+@media (hover: none), (pointer: coarse), (max-width: 768px) {
+  #cursor-dot, #cursor-ring {
+    display: none !important;
+  }
 }
 
 #cursor-dot {

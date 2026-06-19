@@ -4,6 +4,11 @@ import { useEffect } from "react";
 
 export default function CustomCursor() {
   useEffect(() => {
+    // Disable custom cursor logic on touch devices or small screens
+    if (typeof window !== "undefined" && window.matchMedia("(hover: none), (max-width: 768px)").matches) {
+      return;
+    }
+
     const dot = document.getElementById("cursor-dot");
     const ring = document.getElementById("cursor-ring");
 
