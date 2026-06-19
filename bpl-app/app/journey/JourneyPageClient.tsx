@@ -110,7 +110,7 @@ export default function JourneyPageClient() {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Timeline Items */}
-          <div className="relative pb-8">
+          <div className="relative">
             {/* Animated center line (desktop only) */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white/5">
               <motion.div
@@ -133,7 +133,7 @@ export default function JourneyPageClient() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", delay: 0.3 }}
-            className="relative z-10 flex flex-col items-center text-center mt-8"
+            className="relative z-10 flex flex-col items-center text-center mt-0"
           >
             <div
               className="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2 border-gold mb-6"

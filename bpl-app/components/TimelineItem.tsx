@@ -15,7 +15,7 @@ export default function TimelineItem({ item, index }: TimelineItemProps) {
   const isLeft = index % 2 === 0;
 
   return (
-    <div ref={ref} className="relative flex items-center justify-center mb-16">
+    <div ref={ref} className="relative flex items-center justify-center mb-16 last:mb-0">
       {/* Desktop Layout */}
       <div className="hidden md:flex items-center w-full">
         {/* Left side */}
