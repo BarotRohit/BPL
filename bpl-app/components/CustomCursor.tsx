@@ -14,8 +14,14 @@ export default function CustomCursor() {
 
     let mouseX = 0, mouseY = 0;
     let ringX = 0, ringY = 0;
+    let isVisible = false;
 
     const moveCursor = (e: MouseEvent) => {
+      if (!isVisible) {
+        isVisible = true;
+        if (dot) dot.style.opacity = "1";
+        if (ring) ring.style.opacity = "1";
+      }
       mouseX = e.clientX;
       mouseY = e.clientY;
       if (dot) {
@@ -53,21 +59,34 @@ export default function CustomCursor() {
       if (dot) dot.style.transform = "scale(1)";
     };
 
-    const interactiveEls = document.querySelectorAll("a, button, [role='button']");
-    interactiveEls.forEach(el => {
-      el.addEventListener("mouseenter", handleMouseEnter);
-      el.addEventListener("mouseleave", handleMouseLeave);
-    });
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("a, button, [role='button']")) {
+        handleMouseEnter();
+      }
+    };
+
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest("a, button, [role='button']")) {
+        handleMouseLeave();
+      }
+    };
+
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
     };
   }, []);
 
   return (
     <>
-      <div id="cursor-dot" style={{ position: "fixed", pointerEvents: "none", zIndex: 9999 }} />
-      <div id="cursor-ring" style={{ position: "fixed", pointerEvents: "none", zIndex: 9998 }} />
+      <div id="cursor-dot" style={{ position: "fixed", pointerEvents: "none", zIndex: 9999, opacity: 0, transition: "opacity 0.3s" }} />
+      <div id="cursor-ring" style={{ position: "fixed", pointerEvents: "none", zIndex: 9998, opacity: 0, transition: "opacity 0.3s" }} />
     </>
   );
 }
