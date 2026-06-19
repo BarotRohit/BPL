@@ -4,7 +4,14 @@ import { motion } from "framer-motion";
 import MasonryGallery from "@/components/MasonryGallery";
 import { config } from "@/lib/config";
 
-export default function GalleryPageClient() {
+import { GalleryImage } from "./page";
+
+interface GalleryPageClientProps {
+  images: GalleryImage[];
+  categories: string[];
+}
+
+export default function GalleryPageClient({ images, categories }: GalleryPageClientProps) {
   return (
     <>
       {/* Hero */}
@@ -226,7 +233,7 @@ export default function GalleryPageClient() {
               A collection of unforgettable moments from BPL Season 1 — on the field and beyond.
             </p>
           </motion.div>
-          <MasonryGallery />
+          <MasonryGallery images={images} categories={categories} />
         </div>
       </section>
     </>

@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fullName, mobile, dateOfBirth, address } = body;
+    const { fullName, mobile, dateOfBirth, role, address } = body;
 
     // Validate required fields
-    if (!fullName || !mobile || !dateOfBirth || !address) {
+    if (!fullName || !mobile || !dateOfBirth || !role || !address) {
       return NextResponse.json(
         { success: false, message: "All fields are required." },
         { status: 400 }
@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
       name: fullName.trim(),
       mobile: mobile.trim(),
       dateOfBirth,
+      role: role.trim(),
       address: address.trim(),
       registrationDateTime: new Date().toLocaleString("en-IN", {
         timeZone: "Asia/Kolkata",
@@ -41,7 +42,20 @@ export async function POST(request: NextRequest) {
       });
 
       if (!sheetsResponse.ok) {
-        throw new Error("Failed to save to Google Sheets.");
+        const errorText = await sheetsResponse.text();
+        console.error("Google Sheets Error:", sheetsResponse.status, errorText);
+        throw new Error("Failed to save to Google Sheets. Status: " + sheetsResponse.status);
+      }
+
+      const responseText = await sheetsResponse.text();
+      console.log("Google Sheets Response Text:", responseText);
+      try {
+        const jsonResponse = JSON.parse(responseText);
+        if (jsonResponse.success === false) {
+           throw new Error("Google Sheets returned false: " + jsonResponse.message);
+        }
+      } catch (e) {
+        console.error("Failed to parse Google Sheets response as JSON:", responseText);
       }
     } else {
       // Log to console in development (no Google Sheets URL configured)

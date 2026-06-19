@@ -16,11 +16,13 @@ export const config = {
   // Board Members
   boardMembers: [
     { id: 1, name: "Nirav Barot", role: "Board Member", phone: "+91 99790 21694", location: "Hanspura" },
-    { id: 2, name: "Akshit Barot", role: "Board Member", phone: "+91 88668 51970", location: "Vastral" },
+    { id: 2, name: "Dev Barot", role: "Board Member", phone: "+91 88668 51970", location: "Vastral" },
     { id: 3, name: "Chirag Barot", role: "Board Member", phone: "+91 90338 71231", location: "Vastral" },
     { id: 4, name: "Hemant Barot", role: "Board Member", phone: "+91 78780 40336", location: "Odhav" },
     { id: 5, name: "Akshay Barot", role: "Board Member", phone: "+91 70161 31219", location: "Naroda" },
     { id: 6, name: "Ketan Barot", role: "Board Member", phone: "+91 90160 34966", location: "Vejalpur" },
+    { id: 7, name: "Rohit Barot", role: "Board Member", phone: "+91 93740 38422", location: "Nikol" },
+    { id: 8, name: "Yug Barot", role: "Board Member", phone: "+91 97245 58523", location: "Nikol" },
   ],
 
   // Social Media (update with real links)
@@ -45,9 +47,9 @@ export const config = {
       tagline: "Runners-Up BPL Season 1",
     },
     awards: {
-      bestBatsman: { name: "Coming Soon", runs: "TBD", teamName: "TBD" },
-      bestBowler: { name: "Coming Soon", wickets: "TBD", teamName: "TBD" },
-      playerOfTournament: { name: "Coming Soon", teamName: "TBD" },
+      bestBatsman: { name: "Chirag Barot", runs: "94", teamName: "Barot Titans" },
+      bestBowler: { name: "Rohit Barot", wickets: "7", teamName: "Barot Titans" },
+      playerOfTournament: { name: "Yug Barot", teamName: "Barot Titans" },
     },
   },
 

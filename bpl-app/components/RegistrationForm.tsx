@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Phone, Calendar, MapPin, CheckCircle, Loader2, AlertCircle } from "lucide-react";
+import { User, Phone, Calendar, MapPin, CheckCircle, Loader2, AlertCircle, Shield } from "lucide-react";
 import dynamic from "next/dynamic";
 
 const ReactConfetti = dynamic(() => import("react-confetti"), { ssr: false });
@@ -32,6 +32,10 @@ const schema = z.object({
     .string()
     .min(10, "Address must be at least 10 characters")
     .max(200, "Address is too long"),
+  role: z.enum(
+    ["Batsman", "Bowler", "Wicket Keeper Batsman", "Batting All Rounder", "Bowling All Rounder"],
+    { errorMap: () => ({ message: "Please select a valid role" }) }
+  ),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -224,6 +228,43 @@ export default function RegistrationForm() {
                 >
                   <AlertCircle size={12} />
                   {errors.dateOfBirth.message}
+                </motion.p>
+              )}
+            </div>
+
+            {/* Role */}
+            <div>
+              <label className="block text-sm font-rajdhani font-600 text-white/70 mb-2 tracking-wide">
+                <Shield size={14} className="inline mr-2 text-cyan" />
+                Player Role <span className="text-orange">*</span>
+              </label>
+              <div className="relative">
+                <select
+                  {...register("role")}
+                  className={`form-input appearance-none bg-dark text-white ${errors.role ? "error" : ""}`}
+                  defaultValue=""
+                >
+                  <option className="bg-[#0a0e27] text-white" value="" disabled>Select your role</option>
+                  <option className="bg-[#0a0e27] text-white" value="Batsman">Batsman</option>
+                  <option className="bg-[#0a0e27] text-white" value="Bowler">Bowler</option>
+                  <option className="bg-[#0a0e27] text-white" value="Wicket Keeper Batsman">Wicket Keeper Batsman</option>
+                  <option className="bg-[#0a0e27] text-white" value="Batting All Rounder">Batting All Rounder</option>
+                  <option className="bg-[#0a0e27] text-white" value="Bowling All Rounder">Bowling All Rounder</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/50">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+              {errors.role && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-xs font-inter mt-1.5 flex items-center gap-1"
+                >
+                  <AlertCircle size={12} />
+                  {errors.role.message}
                 </motion.p>
               )}
             </div>
