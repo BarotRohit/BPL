@@ -3,7 +3,7 @@ import RegisterPageClient from "./RegisterPageClient";
 
 export const metadata: Metadata = {
   title: "Register | BPL Season 2 — Barot Premier League",
-  description: "Register now for Barot Premier League Season 2. Fill in your details and be part of the biggest cricket festival in the Barot community.",
+  description: "Register now for Barot Premier League Season 2. Fill in your details and be part of the biggest cricket festival in the Barot family.",
 };
 
 export default function RegisterPage() {

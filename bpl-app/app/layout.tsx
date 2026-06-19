@@ -17,18 +17,18 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "BPL Season 2 | Barot Premier League - The Biggest Cricket Festival",
   description:
-    "Barot Premier League Season 2 is here! Join the biggest cricket festival of the Barot Community. Register now for BPL-2 and be part of an unforgettable cricketing experience.",
+    "Barot Premier League Season 2 is here! Join the biggest cricket festival of the Barot Family. Register now for BPL-2 and be part of an unforgettable cricketing experience.",
   keywords: [
     "Barot Premier League",
     "BPL Season 2",
     "Cricket Tournament",
-    "Barot Community",
+    "Barot Family",
     "BPL-2",
     "Cricket Festival",
   ],
   openGraph: {
     title: "BPL Season 2 | Barot Premier League",
-    description: "The Biggest Cricket Festival of the Barot Community is Coming Soon!",
+    description: "The Biggest Cricket Festival of the Barot Family is Coming Soon!",
     type: "website",
   },
 };

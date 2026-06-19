@@ -3,14 +3,14 @@ export const config = {
   tournamentName: "Barot Premier League",
   season: 2,
   shortName: "BPL",
-  tagline: "The Biggest Cricket Festival of the Barot Community",
+  tagline: "The Biggest Cricket Festival of the Barot Family",
 
   // Set to null to show "Coming Soon" instead of countdown
   tournamentDate: null as string | null, // e.g., "2027-01-15T00:00:00"
 
   // Contact Information (update with real info)
   contact: {
-    address: "Barot Village, Mandi District, Himachal Pradesh, India",
+    email: "contact@barotpremierleague.com",
   },
 
   // Board Members
@@ -182,7 +182,7 @@ export const config = {
       id: 2,
       name: "Priya Sharma",
       role: "Community Member",
-      quote: "It wasn't just a cricket tournament — it was a celebration of our entire Barot community. Families, elders, children, everyone was there cheering!",
+      quote: "It wasn't just a cricket tournament — it was a celebration of our entire Barot family. Families, elders, children, everyone was there cheering!",
       rating: 5,
     },
     {
@@ -215,7 +215,7 @@ export const config = {
       year: "2024",
       title: "The Idea Was Born",
       icon: "💡",
-      description: "It all started with a simple conversation between friends who loved cricket. A dream to organize a professional-level tournament right here in our beloved Barot community. What seemed impossible at first, soon became a burning passion.",
+      description: "It all started with a simple conversation between friends who loved cricket. A dream to organize a professional-level tournament right here in our beloved Barot family. What seemed impossible at first, soon became a burning passion.",
       color: "#6c35de",
     },
     {
@@ -231,7 +231,7 @@ export const config = {
       year: "2024",
       title: "Community Stands Together",
       icon: "🤝",
-      description: "The Barot community showed up in ways we never expected. Elders offered wisdom, youth brought energy, families volunteered, and the entire village rallied behind this dream. It was a reminder that together, we can achieve anything.",
+      description: "The Barot family showed up in ways we never expected. Elders offered wisdom, youth brought energy, families volunteered, and the entire village rallied behind this dream. It was a reminder that together, we can achieve anything.",
       color: "#f5c518",
     },
     {
@@ -255,7 +255,7 @@ export const config = {
       year: "2025",
       title: "Beyond Cricket",
       icon: "❤️",
-      description: "But BPL was never just about cricket. It was about grandparents watching their grandchildren play, about children running around with excitement, about families creating memories together. BPL became the heartbeat of the Barot community.",
+      description: "But BPL was never just about cricket. It was about grandparents watching their grandchildren play, about children running around with excitement, about families creating memories together. BPL became the heartbeat of the Barot family.",
       color: "#ef4444",
     },
   ],
@@ -273,7 +273,7 @@ export const config = {
       id: 2,
       icon: "🎉",
       title: "Community Celebration",
-      description: "BPL is more than cricket — it's a festival that unites the entire Barot community in joy, pride, and togetherness.",
+      description: "BPL is more than cricket — it's a festival that unites the entire Barot family in joy, pride, and togetherness.",
       color: "#6c35de",
     },
     {

@@ -153,7 +153,7 @@ function HomeContent() {
             transition={{ delay: 0.7 }}
             className="font-rajdhani font-600 text-xl md:text-2xl text-white/80 mb-4 tracking-wide"
           >
-            The Biggest Cricket Festival of the Barot Community is Coming Soon!
+            The Biggest Cricket Festival of the Barot Family is Coming Soon!
           </motion.p>
 
           {/* Description */}
@@ -165,7 +165,7 @@ function HomeContent() {
           >
             After the huge success of BPL Season 1, we are back with an even bigger and more exciting Season 2. 
             Get ready for fierce competition, unforgettable memories, and the celebration of cricket 
-            with the entire Barot community.
+            with the entire Barot family.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -442,7 +442,7 @@ function HomeContent() {
             </h2>
             <p className="font-rajdhani text-xl text-white/60 mb-8 max-w-lg mx-auto">
               Registration for BPL Season 2 is open! Secure your spot in cricket history.
-              Be part of the Barot community&apos;s biggest sporting event.
+              Be part of the Barot family&apos;s biggest sporting event.
             </p>
             <Link href="/register">
               <motion.div

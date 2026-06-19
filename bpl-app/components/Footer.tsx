@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Phone, MapPin } from "lucide-react";
+import { Phone } from "lucide-react";
 import { config } from "@/lib/config";
 
 const InstagramIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>;
@@ -39,7 +39,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-white/50 text-sm font-inter leading-relaxed mb-6">
-              Barot Premier League — bringing the Barot community together through the love of cricket. 
+              Barot Premier League — bringing the Barot family together through the love of cricket. 
               Season 2 is going to be bigger, better, and more exciting!
             </p>
             {/* Social */}
@@ -99,13 +99,7 @@ export default function Footer() {
                   </Link>
                 </div>
               </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={16} className="text-orange mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-xs text-white/40 font-inter">Address</div>
-                  <p className="text-white/70 font-rajdhani text-sm">{config.contact.address}</p>
-                </div>
-              </li>
+
             </ul>
           </div>
 
@@ -135,7 +129,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/30 text-sm font-inter text-center md:text-left">
-            © 2025 Barot Premier League. All rights reserved. Made with ❤️ for the Barot Community.
+            © 2025 Barot Premier League. All rights reserved. Made with ❤️ for the Barot Family.
           </p>
           <div className="flex items-center gap-2 text-white/30 text-sm font-inter">
             <span className="text-gold">🏆</span>
