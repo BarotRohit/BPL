@@ -109,19 +109,19 @@ export default function JourneyPageClient() {
         <FloatingParticles />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Animated center line (desktop only) */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white/5">
-            <motion.div
-              className="absolute top-0 left-0 w-full"
-              style={{
-                height: lineHeight,
-                background: "linear-gradient(180deg, #6c35de, #00d4ff, #f5c518, #ff6b35, #ef4444)",
-              }}
-            />
-          </div>
-
           {/* Timeline Items */}
-          <div className="relative">
+          <div className="relative pb-8">
+            {/* Animated center line (desktop only) */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white/5">
+              <motion.div
+                className="absolute top-0 left-0 w-full"
+                style={{
+                  height: lineHeight,
+                  background: "linear-gradient(180deg, #6c35de, #00d4ff, #f5c518, #ff6b35, #ef4444)",
+                }}
+              />
+            </div>
+
             {config.journey.map((item, i) => (
               <TimelineItem key={item.id} item={item} index={i} />
             ))}
@@ -133,7 +133,7 @@ export default function JourneyPageClient() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ type: "spring", delay: 0.3 }}
-            className="flex flex-col items-center text-center mt-8"
+            className="relative z-10 flex flex-col items-center text-center mt-8"
           >
             <div
               className="w-20 h-20 rounded-full flex items-center justify-center text-4xl border-2 border-gold mb-6"
