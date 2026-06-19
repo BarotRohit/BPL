@@ -35,15 +35,15 @@ export default function CustomCursor() {
     // Scale on hover
     const handleMouseEnter = () => {
       if (ring) {
-        ring.style.transform = "scale(1.8)";
-        ring.style.borderColor = "rgba(245, 197, 24, 0.8)";
+        ring.style.transform = "scale(1.2)";
+        ring.style.boxShadow = "0 0 20px rgba(245, 197, 24, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.5)";
       }
       if (dot) dot.style.transform = "scale(0.5)";
     };
     const handleMouseLeave = () => {
       if (ring) {
         ring.style.transform = "scale(1)";
-        ring.style.borderColor = "rgba(108, 53, 222, 0.6)";
+        ring.style.boxShadow = "2px 2px 8px rgba(0, 0, 0, 0.5)";
       }
       if (dot) dot.style.transform = "scale(1)";
     };
