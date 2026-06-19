@@ -34,7 +34,7 @@ const schema = z.object({
     .max(200, "Address is too long"),
   role: z.enum(
     ["Batsman", "Bowler", "Wicket Keeper Batsman", "Batting All Rounder", "Bowling All Rounder"],
-    { errorMap: () => ({ message: "Please select a valid role" }) }
+    { message: "Please select a valid role" }
   ),
 });
 
