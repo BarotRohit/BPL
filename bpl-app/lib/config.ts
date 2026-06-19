@@ -27,9 +27,9 @@ export const config = {
 
   // Social Media (update with real links)
   social: {
-    instagram: "https://www.instagram.com",
-    facebook: "https://www.facebook.com",
-    youtube: "https://www.youtube.com",
+    instagram: "https://www.instagram.com/barotpremierleague__s1?igsh=cWpka2diM3NoaWty",
+    whatsapp: "https://chat.whatsapp.com/BRxvJ7UWtF57pfjyEGVDjO?s=sw&p=a&ilr=4",
+    youtube: "https://www.youtube.com/live/67Wc2FsCsE0?si=8MZxx_p3V39mDkyw",
   },
 
   // Google Sheets Apps Script Web App URL
