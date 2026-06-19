@@ -110,7 +110,7 @@ export default function JourneyPageClient() {
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Timeline Items */}
-          <div className="relative">
+          <div className="relative pb-32">
             {/* Animated center line (desktop only) */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 bg-white/5">
               <motion.div
