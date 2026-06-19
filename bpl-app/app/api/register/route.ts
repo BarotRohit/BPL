@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
         if (jsonResponse.success === false) {
            throw new Error("Google Sheets returned false: " + jsonResponse.message);
         }
-      } catch (e) {
+      } catch {
         console.error("Failed to parse Google Sheets response as JSON:", responseText);
       }
     } else {

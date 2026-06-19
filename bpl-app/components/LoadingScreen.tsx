@@ -32,6 +32,7 @@ export default function LoadingScreen({ onComplete }: { onComplete?: () => void 
     }, 120);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
