@@ -31,7 +31,8 @@ export async function POST(request: NextRequest) {
       }),
     };
 
-    const sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || process.env.GOOGLE_SHEETS_URL;
+    let sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || process.env.GOOGLE_SHEETS_URL || "";
+    sheetsUrl = sheetsUrl.trim().replace(/^["']|["']$/g, '');
 
     if (sheetsUrl && sheetsUrl.startsWith("https://script.google.com")) {
       // Submit to Google Sheets
