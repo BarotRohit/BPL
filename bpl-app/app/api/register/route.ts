@@ -31,8 +31,7 @@ export async function POST(request: NextRequest) {
       }),
     };
 
-    let sheetsUrl = process.env.NEXT_PUBLIC_GOOGLE_SHEETS_URL || process.env.GOOGLE_SHEETS_URL || "";
-    sheetsUrl = sheetsUrl.trim().replace(/^["']|["']$/g, '');
+    const sheetsUrl = "https://script.google.com/macros/s/AKfycbzay5vQV3LXb1eYnTtdgXIEi_c0osCFdPw17cwnJrRWEjb6jgJ8Tmlg16nVO_io-NhU/exec";
 
     if (!sheetsUrl || !sheetsUrl.startsWith("https://script.google.com")) {
       // Force an error so we can see exactly what Vercel is reading
