@@ -24,7 +24,6 @@ export default function GalleryPage() {
     const folders = fs.readdirSync(galleryDir, { withFileTypes: true })
       .filter(dirent => 
         dirent.isDirectory() && 
-        dirent.name !== "Team Photos" && 
         dirent.name !== "Trophy Moments"
       );
 
