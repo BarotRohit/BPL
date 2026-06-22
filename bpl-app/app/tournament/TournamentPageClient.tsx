@@ -239,6 +239,7 @@ export default function TournamentPageClient() {
                   >
                     {activeSeason === "season1" && sponsor.logo ? (
                       <div className="w-48 h-28 relative mb-4 rounded-xl overflow-hidden border border-white/20 bg-white flex items-center justify-center p-3 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain drop-shadow-sm" />
                       </div>
                     ) : (
