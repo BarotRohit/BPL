@@ -33,13 +33,13 @@ export async function POST(request: NextRequest) {
       }),
     };
 
-    const sheetsUrl = "https://script.google.com/macros/s/AKfycbzay5vQV3LXb1eYnTtdgXIEi_c0osCFdPw17cwnJrRWEjb6jgJ8Tmlg16nVO_io-NhU/exec";
+    const sheetsUrl = "https://script.google.com/macros/s/AKfycbzksImW-x_0-dcuBCMnG8F2X25hB9NFcEVgkEsL_8Qv_q9cJbEEwftXx8T-g7RsTY0p/exec";
 
     if (!sheetsUrl || !sheetsUrl.startsWith("https://script.google.com")) {
       // Force an error so we can see exactly what Vercel is reading
-      return NextResponse.json({ 
-        success: false, 
-        message: `Configuration Error: sheetsUrl is invalid. Vercel read the value as: '${sheetsUrl}'` 
+      return NextResponse.json({
+        success: false,
+        message: `Configuration Error: sheetsUrl is invalid. Vercel read the value as: '${sheetsUrl}'`
       }, { status: 500 });
     }
 
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
     try {
       const jsonResponse = JSON.parse(responseText);
       if (jsonResponse.success === false) {
-         throw new Error("Google Sheets returned false: " + jsonResponse.message);
+        throw new Error("Google Sheets returned false: " + jsonResponse.message);
       }
     } catch {
       console.error("Failed to parse Google Sheets response as JSON:", responseText);

@@ -51,6 +51,29 @@ export const config = {
       bestBowler: { name: "Rohit Barot", wickets: "7", teamName: "Barot Titans" },
       playerOfTournament: { name: "Yug Barot", teamName: "Barot Titans" },
     },
+    sponsors: [
+      { name: "Season 1 Main Sponsor", logo: "/gallery/sponsor-placeholder.jpg" },
+    ]
+  },
+  
+  // Season 2 Data (Placeholders)
+  season2: {
+    champion: {
+      teamName: "TBD",
+      tagline: "Who will claim the throne?",
+    },
+    runnerUp: {
+      teamName: "TBD",
+      tagline: "Who will fall short?",
+    },
+    awards: {
+      bestBatsman: { name: "TBD", runs: "-", teamName: "TBD" },
+      bestBowler: { name: "TBD", wickets: "-", teamName: "TBD" },
+      playerOfTournament: { name: "TBD", teamName: "TBD" },
+    },
+    sponsors: [
+      { name: "TBD", logo: "/gallery/sponsor-placeholder.jpg" },
+    ]
   },
 
   // Stats

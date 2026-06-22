@@ -11,6 +11,7 @@ const YoutubeIcon = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="
 
 const footerLinks = [
   { href: "/", label: "Home" },
+  { href: "/tournament", label: "Tournament" },
   { href: "/teams", label: "Teams" },
   { href: "/gallery", label: "Gallery" },
   { href: "/journey", label: "Journey" },
