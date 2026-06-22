@@ -11,7 +11,7 @@ const navLinks = [
   { href: "/teams", label: "Teams" },
   { href: "/gallery", label: "Gallery" },
   { href: "/journey", label: "Journey" },
-  { href: "/board", label: "Board" },
+  { href: "/board", label: "Contact Us" },
   { href: "/register", label: "Register", isPrimary: true },
 ];
 
@@ -55,9 +55,6 @@ export default function Navbar() {
             <div>
               <div className="font-bebas text-2xl tracking-widest gradient-text-gold leading-none">
                 BPL
-              </div>
-              <div className="text-[10px] font-rajdhani font-semibold tracking-[3px] text-cyan-400 uppercase leading-none">
-                Season 2
               </div>
             </div>
           </Link>

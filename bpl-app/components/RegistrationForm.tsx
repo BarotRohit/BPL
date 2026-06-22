@@ -36,6 +36,8 @@ const schema = z.object({
     ["Batsman", "Bowler", "Wicket Keeper Batsman", "Batting All Rounder", "Bowling All Rounder"],
     { message: "Please select a valid role" }
   ),
+  gender: z.enum(["Male", "Female"], { message: "Please select a gender" }),
+  suggestions: z.string().optional(),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -232,6 +234,40 @@ export default function RegistrationForm() {
               )}
             </div>
 
+            {/* Gender */}
+            <div>
+              <label className="block text-sm font-rajdhani font-600 text-white/70 mb-2 tracking-wide">
+                <User size={14} className="inline mr-2 text-royal-light" />
+                Gender <span className="text-orange">*</span>
+              </label>
+              <div className="relative">
+                <select
+                  {...register("gender")}
+                  className={`form-input appearance-none bg-dark text-white ${errors.gender ? "error" : ""}`}
+                  defaultValue=""
+                >
+                  <option className="bg-[#0a0e27] text-white" value="" disabled>Select your gender</option>
+                  <option className="bg-[#0a0e27] text-white" value="Male">Male</option>
+                  <option className="bg-[#0a0e27] text-white" value="Female">Female</option>
+                </select>
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/50">
+                  <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </div>
+              </div>
+              {errors.gender && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-xs font-inter mt-1.5 flex items-center gap-1"
+                >
+                  <AlertCircle size={12} />
+                  {errors.gender.message}
+                </motion.p>
+              )}
+            </div>
+
             {/* Role */}
             <div>
               <label className="block text-sm font-rajdhani font-600 text-white/70 mb-2 tracking-wide">
@@ -307,6 +343,30 @@ export default function RegistrationForm() {
                 </div>
               </motion.div>
             )}
+
+            {/* Suggestions */}
+            <div>
+              <label className="block text-sm font-rajdhani font-600 text-white/70 mb-2 tracking-wide">
+                <Shield size={14} className="inline mr-2 text-cyan" />
+                Suggestions (Optional)
+              </label>
+              <textarea
+                {...register("suggestions")}
+                placeholder="Any suggestions for BPL Season 2?"
+                rows={2}
+                className={`form-input resize-none ${errors.suggestions ? "error" : ""}`}
+              />
+              {errors.suggestions && (
+                <motion.p
+                  initial={{ opacity: 0, y: -5 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-400 text-xs font-inter mt-1.5 flex items-center gap-1"
+                >
+                  <AlertCircle size={12} />
+                  {errors.suggestions.message}
+                </motion.p>
+              )}
+            </div>
 
             {/* Submit Button */}
             <motion.button

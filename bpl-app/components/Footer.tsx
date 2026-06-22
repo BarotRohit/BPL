@@ -14,7 +14,7 @@ const footerLinks = [
   { href: "/teams", label: "Teams" },
   { href: "/gallery", label: "Gallery" },
   { href: "/journey", label: "Journey" },
-  { href: "/board", label: "Board Members" },
+  { href: "/board", label: "Contact Us" },
   { href: "/register", label: "Register" },
 ];
 
@@ -35,7 +35,6 @@ export default function Footer() {
               <span className="text-4xl">🏆</span>
               <div>
                 <div className="font-bebas text-3xl tracking-widest gradient-text-gold">BPL</div>
-                <div className="text-xs font-rajdhani font-bold tracking-[3px] text-cyan-400 uppercase">Season 2</div>
               </div>
             </Link>
             <p className="text-white/50 text-sm font-inter leading-relaxed mb-6">

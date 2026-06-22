@@ -14,9 +14,9 @@ This guide explains how to connect the BPL registration form to a Google Spreads
 3. Rename the first sheet to **"Registrations"**
 4. Add the following headers in **Row 1**:
 
-| A | B | C | D | E | F |
-|---|---|---|---|---|---|
-| Name | Mobile | Date of Birth | Role | Address | Registration Date & Time |
+| A | B | C | D | E | F | G | H |
+|---|---|---|---|---|---|---|---|
+| Name | Mobile | Date of Birth | Role | Gender | Address | Suggestions | Registration Date & Time |
 
 ---
 
@@ -41,13 +41,14 @@ function doPost(e) {
   try {
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Registrations");
     var data = JSON.parse(e.postData.contents);
-    
     sheet.appendRow([
       data.name,
       data.mobile,
       data.dateOfBirth,
       data.role,
+      data.gender,
       data.address,
+      data.suggestions || "",
       data.registrationDateTime
     ]);
     
@@ -145,8 +146,10 @@ npm run dev
 | B | Mobile | 10-digit mobile number |
 | C | Date of Birth | YYYY-MM-DD format |
 | D | Role | Player's role (Batsman, Bowler, etc.) |
-| E | Address | Player's address |
-| F | Registration Date & Time | Auto-generated timestamp (IST) |
+| E | Gender | Player's gender (Male/Female) |
+| F | Address | Player's address |
+| G | Suggestions | Optional suggestions provided by the player |
+| H | Registration Date & Time | Auto-generated timestamp (IST) |
 
 ---
 

@@ -3,10 +3,10 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { fullName, mobile, dateOfBirth, role, address } = body;
+    const { fullName, mobile, dateOfBirth, role, gender, address, suggestions } = body;
 
     // Validate required fields
-    if (!fullName || !mobile || !dateOfBirth || !role || !address) {
+    if (!fullName || !mobile || !dateOfBirth || !role || !gender || !address) {
       return NextResponse.json(
         { success: false, message: "All fields are required." },
         { status: 400 }
@@ -19,7 +19,9 @@ export async function POST(request: NextRequest) {
       mobile: mobile.trim(),
       dateOfBirth,
       role: role.trim(),
+      gender: gender.trim(),
       address: address.trim(),
+      suggestions: suggestions ? suggestions.trim() : "",
       registrationDateTime: new Date().toLocaleString("en-IN", {
         timeZone: "Asia/Kolkata",
         day: "2-digit",
