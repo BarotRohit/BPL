@@ -52,7 +52,9 @@ export const config = {
       playerOfTournament: { name: "Yug Barot", teamName: "Barot Titans" },
     },
     sponsors: [
-      { name: "Season 1 Main Sponsor", logo: "/gallery/sponsor-placeholder.jpg" },
+      { name: "Royal Fashion", logo: "/sponsors/royal-fashion.jpeg" },
+      { name: "Heena Enterprise", logo: "/sponsors/heena-enterprise.jpeg" },
+      { name: "DS Computer", logo: "/sponsors/DS.jpeg" },
     ]
   },
   
