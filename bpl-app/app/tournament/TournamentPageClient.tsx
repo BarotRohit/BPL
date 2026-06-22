@@ -51,24 +51,28 @@ export default function TournamentPageClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="inline-flex bg-white/5 backdrop-blur-md rounded-full p-1 border border-white/10"
+            className="inline-flex bg-white/5 backdrop-blur-md rounded-full p-1.5 border border-white/10 relative"
           >
+            <div 
+              className="absolute top-1.5 bottom-1.5 w-1/2 rounded-full transition-all duration-500 ease-out"
+              style={{
+                left: activeSeason === "season1" ? "6px" : "calc(50% - 6px)",
+                background: activeSeason === "season1" ? "#f5c518" : "#00d4ff",
+                boxShadow: activeSeason === "season1" ? "0 0 20px rgba(245,197,24,0.4)" : "0 0 20px rgba(0,212,255,0.4)"
+              }}
+            />
             <button
               onClick={() => setActiveSeason("season1")}
-              className={`px-8 py-3 rounded-full font-rajdhani font-bold tracking-widest text-sm transition-all duration-300 ${
-                activeSeason === "season1" 
-                  ? "bg-gold text-navy shadow-[0_0_20px_rgba(245,197,24,0.4)]" 
-                  : "text-white/60 hover:text-white hover:bg-white/5"
+              className={`relative z-10 px-8 py-3 rounded-full font-rajdhani font-bold tracking-widest text-sm transition-colors duration-300 w-40 ${
+                activeSeason === "season1" ? "text-navy" : "text-white/60 hover:text-white"
               }`}
             >
               SEASON 1
             </button>
             <button
               onClick={() => setActiveSeason("season2")}
-              className={`px-8 py-3 rounded-full font-rajdhani font-bold tracking-widest text-sm transition-all duration-300 ${
-                activeSeason === "season2" 
-                  ? "bg-cyan text-navy shadow-[0_0_20px_rgba(0,212,255,0.4)]" 
-                  : "text-white/60 hover:text-white hover:bg-white/5"
+              className={`relative z-10 px-8 py-3 rounded-full font-rajdhani font-bold tracking-widest text-sm transition-colors duration-300 w-40 ${
+                activeSeason === "season2" ? "text-navy" : "text-white/60 hover:text-white"
               }`}
             >
               SEASON 2
@@ -95,11 +99,24 @@ export default function TournamentPageClient() {
                 <div className="section-divider" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.2 } }
+                }}
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              >
                 {/* Champion */}
                 <motion.div
-                  whileHover={{ y: -10 }}
-                  className="relative rounded-3xl overflow-hidden border border-gold/30 p-8 flex flex-col items-center text-center gap-4"
+                  variants={{
+                    hidden: { opacity: 0, x: -40 },
+                    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
+                  }}
+                  whileHover={{ y: -10, scale: 1.02, boxShadow: "0 30px 60px rgba(245,197,24,0.25)" }}
+                  className="relative rounded-3xl overflow-hidden border border-gold/30 p-8 flex flex-col items-center text-center gap-4 transition-all duration-500"
                   style={{
                     background: "linear-gradient(135deg, rgba(245,197,24,0.1), rgba(245,197,24,0.05))",
                     boxShadow: "0 20px 60px rgba(245,197,24,0.15)",
@@ -130,8 +147,12 @@ export default function TournamentPageClient() {
 
                 {/* Runner Up */}
                 <motion.div
-                  whileHover={{ y: -10 }}
-                  className="relative rounded-3xl overflow-hidden border border-gray-500/30 p-8 flex flex-col items-center text-center gap-4"
+                  variants={{
+                    hidden: { opacity: 0, x: 40 },
+                    visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 100 } }
+                  }}
+                  whileHover={{ y: -10, scale: 1.02, boxShadow: "0 30px 60px rgba(156,163,175,0.15)" }}
+                  className="relative rounded-3xl overflow-hidden border border-gray-500/30 p-8 flex flex-col items-center text-center gap-4 transition-all duration-500"
                   style={{
                     background: "linear-gradient(135deg, rgba(156,163,175,0.08), rgba(156,163,175,0.03))",
                   }}
@@ -154,7 +175,7 @@ export default function TournamentPageClient() {
                     <span className="font-rajdhani font-600 text-gray-400 text-sm tracking-wide">🥈 Runner-Up</span>
                   </div>
                 </motion.div>
-              </div>
+              </motion.div>
             </div>
           </section>
 
@@ -171,7 +192,16 @@ export default function TournamentPageClient() {
                 <div className="section-divider" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.15 } }
+                }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
                 {[
                   {
                     icon: "🏏",
@@ -200,20 +230,33 @@ export default function TournamentPageClient() {
                 ].map((award, i) => (
                   <motion.div
                     key={i}
-                    whileHover={{ scale: 1.03, y: -5 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center"
+                    variants={{
+                      hidden: { opacity: 0, y: 30, scale: 0.9 },
+                      visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100 } }
+                    }}
+                    whileHover={{ scale: 1.05, y: -8, boxShadow: `0 20px 40px -10px ${award.color}40`, borderColor: `${award.color}80` }}
+                    className="bg-white/5 border border-white/10 rounded-3xl p-8 text-center transition-all duration-300 relative overflow-hidden group"
                   >
-                    <div className="text-5xl mb-4">{award.icon}</div>
-                    <div className="font-rajdhani font-700 text-sm tracking-[2px] uppercase mb-2" style={{ color: award.color }}>
+                    <div className="absolute top-0 left-0 w-full h-1 opacity-50 group-hover:opacity-100 transition-opacity" style={{ background: award.color }} />
+                    <motion.div 
+                      animate={{ rotate: [0, -10, 10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.5 }}
+                      className="text-6xl mb-6"
+                      style={{ filter: `drop-shadow(0 0 15px ${award.color}60)` }}
+                    >
+                      {award.icon}
+                    </motion.div>
+                    <div className="font-rajdhani font-700 text-sm tracking-[3px] uppercase mb-3" style={{ color: award.color }}>
                       {award.award}
                     </div>
-                    <h4 className="font-bebas text-3xl tracking-wide text-white mb-2">{award.name}</h4>
-                    <div className="inline-block px-4 py-1 rounded-full bg-white/5 text-sm font-inter text-white/70">
-                      {award.stat} {award.statLabel}
+                    <h4 className="font-bebas text-4xl tracking-wide text-white mb-4">{award.name}</h4>
+                    <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10" style={{ background: `${award.color}15` }}>
+                      <span className="font-bebas text-xl" style={{ color: award.color }}>{award.stat}</span>
+                      <span className="font-inter text-xs text-white/50">{award.statLabel}</span>
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </section>
 
@@ -230,28 +273,41 @@ export default function TournamentPageClient() {
                 </p>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-8">
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.1 } }
+                }}
+                className="flex flex-wrap justify-center gap-8"
+              >
                 {seasonData.sponsors.map((sponsor, idx) => (
                   <motion.div
                     key={idx}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-white/5 border border-white/10 rounded-2xl p-8 flex flex-col items-center justify-center min-w-[250px] text-center"
+                    variants={{
+                      hidden: { opacity: 0, y: 30, scale: 0.8 },
+                      visible: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 100 } }
+                    }}
+                    whileHover={{ scale: 1.05, y: -5, boxShadow: "0 20px 40px -10px rgba(255, 255, 255, 0.1)", borderColor: "rgba(255,255,255,0.2)" }}
+                    className="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col items-center justify-center min-w-[250px] text-center transition-all duration-300 group"
                   >
                     {activeSeason === "season1" && sponsor.logo ? (
-                      <div className="w-48 h-28 relative mb-4 rounded-xl overflow-hidden border border-white/20 bg-white flex items-center justify-center p-3 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)]">
+                      <div className="w-48 h-28 relative mb-6 rounded-xl overflow-hidden border border-white/20 bg-white flex items-center justify-center p-3 shadow-[inset_0_2px_10px_rgba(0,0,0,0.1)] group-hover:border-gold/50 transition-colors">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain drop-shadow-sm" />
+                        <img src={sponsor.logo} alt={sponsor.name} className="w-full h-full object-contain drop-shadow-sm group-hover:scale-105 transition-transform duration-500" />
                       </div>
                     ) : (
-                      <div className="w-48 h-28 relative mb-4 rounded-xl overflow-hidden border border-dashed border-white/20 bg-white/5 flex items-center justify-center">
-                        <span className="font-rajdhani font-bold text-white/30 tracking-widest text-xl">TBD</span>
+                      <div className="w-48 h-28 relative mb-6 rounded-xl overflow-hidden border border-dashed border-white/20 bg-white/5 flex items-center justify-center group-hover:border-cyan/50 transition-colors">
+                        <span className="font-rajdhani font-bold text-white/30 tracking-widest text-xl group-hover:text-cyan/70 transition-colors">TBD</span>
                       </div>
                     )}
-                    <h4 className="font-bebas text-2xl tracking-widest text-white/80">{sponsor.name}</h4>
-                    <p className="text-xs font-rajdhani text-gold uppercase tracking-[2px] mt-1">Official Sponsor</p>
+                    <h4 className="font-bebas text-2xl tracking-widest text-white/80 group-hover:text-white transition-colors">{sponsor.name}</h4>
+                    <p className="text-xs font-rajdhani text-gold uppercase tracking-[3px] mt-2 opacity-80 group-hover:opacity-100 transition-opacity">Official Sponsor</p>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </section>
         </motion.div>
