@@ -52,7 +52,7 @@ export default function BoardPageClient() {
           }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
-          {config.boardMembers.map((member, index) => (
+          {config.boardMembers.map((member) => (
             <motion.div
               key={member.id}
               variants={{
@@ -98,7 +98,7 @@ export default function BoardPageClient() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
